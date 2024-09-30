@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: 29sep-alanp-argocd-flask
+  labels:
+    app: 29sep-alanp-argocd-flask
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: 29sep-alanp-argocd-flask
+  template:
+    metadata:
+      labels:
+        app: 29sep-alanp-argocd-flask
+    spec:
+      containers:
+      - name: flask
+        image: 29sep-alanp-helmargo:latest
+        ports:
+        - containerPort: 8000

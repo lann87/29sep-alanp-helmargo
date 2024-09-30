@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: 29sep-alanp-argocd-flask
+spec:
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 8000
+  selector:
+    app: 29sep-alanp-argocd-flask

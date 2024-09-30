@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ include "flask-29sep-alanp-argocd-flask.fullname" . }}-test-connection"
+  labels:
+    {{- include "flask-29sep-alanp-argocd-flask.labels" . | nindent 4 }}
+  annotations:
+    "helm.sh/hook": test
+spec:
+  containers:
+    - name: wget
+      image: busybox
+      command: ['wget']
+      args: ['{{ include "flask-29sep-alanp-argocd-flask.fullname" . }}:{{ .Values.service.port }}']
+  restartPolicy: Never
